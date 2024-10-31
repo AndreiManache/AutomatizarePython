@@ -1,0 +1,145 @@
+The automation works like this:
+    1. Paste the ad ids in the csv file.
+    2. Run the script with the apropriate value for the dropdown selector.
+
+    Select-ul din AVT:
+
+    <select name="id_index">
+        <option></option>
+                    <option value="251">Access to the new pricing model (listing_fee_price_groups_1, 365)</option>
+                    <option value="234">Business Site Pro 12 months (business_site_pro_3, 365)</option>
+                    <option value="237">Profil cumparator 1 an (buyer_profile_3, 365)</option>
+                    <option value="242">Club Autovit 12 luni (club_autovit_5, 365)</option>
+                    <option value="241">Club Autovit 9 luni (club_autovit_4, 274)</option>
+                    <option value="236">Profil cumparator 6 luna (buyer_profile_2, 183)</option>
+                    <option value="233">Business Site Pro 6 months (business_site_pro_2, 183)</option>
+                    <option value="240">Club Autovit 6 luni (club_autovit_3, 183)</option>
+                    <option value="239">Club Autovit 3 luni (club_autovit_2, 91)</option>
+                    <option value="244">Reactualizare stoc (x3) (automatic_bump_2, 30)</option>
+                    <option value="250">Reactualizare stoc (x3) (automatic_bump_8, 30)</option>
+                    <option value="238">Club Autovit 30 zile (club_autovit_1, 30)</option>
+                    <option value="232">Early Access 30 days (early_access_1, 30)</option>
+                    <option value="249">Reactualizare stoc (x1) (automatic_bump_7, 30)</option>
+                    <option value="243">Reactualizare stoc (x1) (automatic_bump_1, 30)</option>
+                    <option value="245">Reactualizare stoc (x1) (automatic_bump_3, 30)</option>
+                    <option value="246">Reactualizare stoc (x3) (automatic_bump_4, 30)</option>
+                    <option value="247">Reactualizare stoc (x1) (automatic_bump_5, 30)</option>
+                    <option value="231">Business Site Pro 30 days (business_site_pro_1, 30)</option>
+                    <option value="235">Profil cumparator 30 de zile (buyer_profile_1, 30)</option>
+                    <option value="248">Reactualizare stoc (x3) (automatic_bump_6, 30)</option>
+                    <option value="170">Profil cumparator (feature_bundle_3)</option>
+                    <option value="220">Dealer promovat - 20.000 afisari (featured_dealer_1)</option>
+                    <option value="230">Showroom digital (feature_bundle_7)</option>
+                    <option value="222">Dealer promovat - 100,000 afisari (featured_dealer_3)</option>
+                    <option value="221">Dealer promovat - 50.000 afisari (featured_dealer_2)</option>
+                    <option value="107">Publicare anunt cu pachet de servicii Autovit Standard (private_package_2)</option>
+                    <option value="105">Publicare anunt cu pachet de servicii Autovit Start (private_package_1)</option>
+                    <option value="109">Publicare anunt cu pachet de servicii Autovit Premium (private_package_3)</option>
+                    <option value="171">Platinum package trial (feature_bundle_4)</option>
+                    <option value="172">Parts test features (feature_bundle_5)</option>
+                    <option value="153">SI and VAS Trial (feature_bundle_2)</option>
+                    <option value="152">Test VAS recommendation (feature_bundle_1)</option>
+                    <option value="173">Top Dealer (feature_bundle_6)</option>
+                    <option value="61">Plata dealer (dealer_payment)</option>
+                    <option value="139">Discount comercial (commercial_discount)</option>
+                    <option value="117">Adauga anunt pentru 45 zile (paid_for_post_45, 45)</option>
+                    <option value="161">Pachetul OLX PRO (olx_bundle_premium, 30)</option>
+                    <option value="174">Pachet Standard (vas_bundle_5, 30)</option>
+                    <option value="115">Adauga anunt pentru 30 zile (paid_for_post_30, 30)</option>
+                    <option value="113">Adauga anunt pentru 15 zile (paid_for_post_15, 15)</option>
+                    <option value="51">Adauga anunt pentru 14 zile (paid_for_post, 14)</option>
+                    <option value="163">Pachet Basic (vas_bundle_1, 7)</option>
+                    <option value="177">Tarif suplimentar - vehicule peste 34,999 EUR (price_tiering_surcharge)</option>
+                    <option value="178">Discount - vehicule sub 7,000 EUR (price_tiering_discount)</option>
+                    <option value="175">Pachet Advanced (vas_bundle_6, 30)</option>
+                    <option value="165">Pachet Advanced (vas_bundle_2, 30)</option>
+                    <option value="65">Adauga anunt pentru 28 zile (paid_for_post_28, 28)</option>
+                    <option value="159">Pachetul OLX STANDARD (olx_bundle_optimum, 7)</option>
+                    <option value="67">Adauga anunt pentru 60 zile (paid_for_post_60, 60)</option>
+                    <option value="167">Pachet Ultra (vas_bundle_3, 30)</option>
+                    <option value="176">Pachet Ultra (vas_bundle_7, 30)</option>
+                    <option value="157">Pachetul OLX START  (olx_bundle_basic, 3)</option>
+                    <option value="147">Promovare in lista de anunturi OLX (olx_topads_30, 30)</option>
+                    <option value="169">Pachet Ultimate (vas_bundle_4, 30)</option>
+                    <option value="123">Evidentiere cu alta culoare (highlight_15, 15)</option>
+                    <option value="6">Evidentiere cu alta culoare (highlight, 14)</option>
+                    <option value="81">Evidentiere cu alta culoare (highlight_7, 7)</option>
+                    <option value="145">Promovare in lista de anunturi OLX (olx_topads_7, 7)</option>
+                    <option value="77">Evidentiere cu alta culoare (highlight_3, 3)</option>
+                    <option value="125">Evidentiere cu alta culoare (highlight_30, 30)</option>
+                    <option value="129">Promovare la inceput de lista (topads_30, 30)</option>
+                    <option value="101">Evidentiere cu alta culoare (highlight_28, 28)</option>
+                    <option value="127">Promovare la inceput de lista (topads_15, 15)</option>
+                    <option value="3">Promovare la inceput de lista (topads_14, 14)</option>
+                    <option value="75">Promovare la inceput de lista (topads_7, 7)</option>
+                    <option value="73">Promovare la inceput de lista (topads_5, 5)</option>
+                    <option value="71">Promovare la inceput de lista (topads_3, 3)</option>
+                    <option value="149">Promovare pe prima pagina OLX (olx_homepage_7)</option>
+                    <option value="151">Promovare pe prima pagina OLX (olx_homepage_30)</option>
+                    <option value="99">Promovare la inceput de lista (topads_28, 28)</option>
+                    <option value="119">Anunturile zilei (ad_homepage_15, 15)</option>
+                    <option value="93">Anunturile zilei (ad_homepage_14, 14)</option>
+                    <option value="87">Anunturile zilei (ad_homepage_7, 7)</option>
+                    <option value="45">Anunturile zilei (ad_homepage, 3)</option>
+                    <option value="83">Anunturile zilei (ad_homepage_1, 1)</option>
+                    <option value="141">Reactualizeaza pe OLX (olx_bump_up_1)</option>
+                    <option value="143">Reactualizeaza pe OLX (olx_bump_up_7)</option>
+                    <option value="121">Anunturile zilei (ad_homepage_30, 30)</option>
+                    <option value="103">Anunturile zilei (ad_homepage_28, 28)</option>
+                    <option value="155">Oferta zilei (ad_bighomepage_5, 5)</option>
+                    <option value="89">Oferta zilei (ad_bighomepage_3, 3)</option>
+                    <option value="63">Oferta zilei (ad_bighomepage, 1)</option>
+                    <option value="154">Reactualizare anunt (bump_up_30, 30)</option>
+                    <option value="137">Reactualizare anunt (bump_up_15, 15)</option>
+                    <option value="135">Reactualizare anunt (bump_up_7, 7)</option>
+                    <option value="133">Reactualizare anunt (bump_up_5, 5)</option>
+                    <option value="131">Reactualizare anunt (bump_up_3, 3)</option>
+                    <option value="97">Reactualizare anunt (bump_up, 1)</option>
+                    <option value="49">Adauga automat si pe OLX.ro (export_olx)</option>
+            </select>
+
+
+
+Select-ul din OLX:
+<select name="id_index">
+		<option></option>
+				<option value="1029">Un Singur Anunt Premium  (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="880">Un anunt (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1463">Piese Auto - Premium - 5 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1462">Piese Auto - Basic - 5 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1464">Piese Auto - Basic - 15 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1465">Piese Auto - Premium - 15 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1466">Piese Auto - Basic - 50 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1467">Piese Auto - Premium - 50 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1469">Piese Auto - Premium - 100 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1468">Piese Auto - Basic - 100 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1470">Piese Auto - Basic - 250 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1471">Piese Auto - Premium - 250 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1472">Piese Auto - Basic - 500 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1473">Piese Auto - Premium - 500 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1474">Piese Auto - Basic - 1000 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1475">Piese Auto - Premium - 1000 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1518">Piese Auto - Premium - 2000 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1519">Piese Auto - Premium - 3000 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1520">Piese Auto - Premium - 4000 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1521">Piese Auto - Premium - 5000 anunturi (Caroserie, oglinzi si faruri , 30)</option>
+				<option value="1381">Pachet 5 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1476">Piese Auto - Max - 15 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1477">Piese Auto - Max - 50 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1478">Piese Auto - Max - 100 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1479">Piese Auto - Max - 250 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1480">Piese Auto - Max - 500 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1481">Piese Auto - Max - 1000 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1526">Piese Auto - Max - 2000 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1527">Piese Auto - Max - 3000 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1528">Piese Auto - Max - 4000 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="1529">Piese Auto - Max - 5000 anunturi (Caroserie, oglinzi si faruri , 90)</option>
+				<option value="267">Pachetul de promovari Start (bundle_basic, 3)</option>
+				<option value="269">Pachetul de promovari Standard (bundle_optimum, 7)</option>
+				<option value="271">Pachetul de promovari Pro (bundle_premium, 30)</option>
+				<option value="3">Promovare in lista 7 zile (promoted_ad_7, 7)</option>
+				<option value="5">Promovare in lista 30 de zile (promoted_ad_30, 30)</option>
+				<option value="102">Reactualizare fulger (pushup)</option>
+				<option value="104">Reactualizare automata (pushup_automatic, 7)</option>
+				<option value="112">Promovare pe prima pagina (homepageads_7, 7)</option>
+			</select>
