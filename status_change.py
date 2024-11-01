@@ -7,7 +7,7 @@ import time
 import csv
 
 # Specify the user ID and desired status for this run
-user_id = "2599831"  # Replace with the actual user ID
+user_id = "20546"  # Replace with the actual user ID
 desired_status = "active"  # Change to "active" or "removed_by_user"
 
 # Load ad IDs from CSV
