@@ -6,24 +6,11 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import csv
 
-# List of promotion codes to apply. The values can also be loaded from
-# ``promotions.csv`` where each line contains one promotion value.
-promotion_values = []
-try:
-    with open("promotions.csv", newline="") as promo_file:
-        reader = csv.reader(promo_file)
-        for row in reader:
-            if row:
-                promotion_values.append(row[0].strip())
-except FileNotFoundError:
-    # Fallback to a default single promotion if the file is missing
-    promotion_values = ["49"]
-
 # Your advert IDs
 advert_ids = []  # Replace with your actual advert IDs
 
 # Open the CSV file and read each row
-with open("D:\Proiecte\Automatizari\Automatizare Python\ids.csv", newline='') as csvfile:
+with open("C:\\Users\\AndreiManache\\Desktop\\Saved Data\\Automatizare\\AutomatizarePython\\ids.csv", newline='') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         # Assuming the ad ID is in the first column
@@ -53,15 +40,15 @@ except Exception as e:
 # Wait and click the Okta login button
 WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#mainForm > fieldset > div > a"))).click()
 
-# Wait for the username field to be present and fill in the credentials
-WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#input43"))).send_keys('andrei.manache@olx.ro')
-driver.find_element(By.CSS_SELECTOR, "#input51").send_keys('Divinacomedie2!')
+# # Wait for the username field to be present and fill in the credentials
+WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#input45"))).send_keys('Divinacomedie3!')
+# driver.find_element(By.CSS_SELECTOR, "#input45").send_keys('Divinacomedie3!')
 
 # Click on the 'Sign In' button
-driver.find_element(By.CSS_SELECTOR, "#form35 > div.o-form-button-bar > input").click()
+driver.find_element(By.CSS_SELECTOR, "#form37 > div.o-form-button-bar > input").click()
 
 # Wait for and click the 'Get push notification' button
-WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#form75 > div.authenticator-verify-list.authenticator-list > div > div:nth-child(2) > div.authenticator-description > div.authenticator-button > a"))).click()
+WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#form62 > div.authenticator-verify-list.authenticator-list > div > div:nth-child(3) > div.authenticator-description > div.authenticator-button > a"))).click()
 
 # Wait for 20 seconds to manually accept the push notification
 time.sleep(10)
@@ -71,26 +58,20 @@ total_ads = len(advert_ids)
 # Iterate through adverts
 for index, advert_id in enumerate(advert_ids, start=1):
     try:
-        for promo in promotion_values:
-            # Navigate to the advert's promotion page for each promotion
-            driver.get(f"{base_url}{advert_id}")
-
-            # Select the promotion from the dropdown
-            dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
-            dropdown.select_by_value(promo)
-
-            # Click the submit button
-            driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
-
-            # Small pause between promotions
-            time.sleep(1)
-
-        print(
-            f"Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)"
-        )
-
+        # Navigate to the advert's promotion page
+        driver.get(f'{base_url}{advert_id}')
+        
+        # Select the promotion from the dropdown
+        dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
+        dropdown.select_by_value('87')  # Use the actual value for the option you wish to select
+        
+        # Click the submit button
+        driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
+        
+        print(f'Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)')
+        
     except Exception as e:
-        print(f"Failed to promote advert {advert_id}: {str(e)}")
+        print(f'Failed to promote advert {advert_id}: {str(e)}')
 
 # Close the driver
 driver.quit()

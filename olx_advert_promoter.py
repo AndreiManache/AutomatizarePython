@@ -10,7 +10,7 @@ import csv
 advert_ids = []  # Replace with your actual advert IDs
 
 # Open the CSV file and read each row
-with open("D:\Proiecte\Automatizari\Automatizare Python\ids.csv", newline='') as csvfile:
+with open("C:\\Users\\AndreiManache\\Desktop\\Saved Data\\Automatizare\\AutomatizarePython\\ids.csv", newline='') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         # Assuming the ad ID is in the first column
@@ -62,7 +62,7 @@ for index, advert_id in enumerate(advert_ids, start=1):
         
         # Select the promotion from the dropdown
         dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
-        dropdown.select_by_value('269')  # Use the actual value for the option you wish to select
+        dropdown.select_by_value('104')  # Use the actual value for the option you wish to select
         
         # Click the submit button
         driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()

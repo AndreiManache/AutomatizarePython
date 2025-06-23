@@ -49,6 +49,7 @@ except Exception as e:
 
 # Wait and click the Okta login button
 try:
+    time.sleep(2)
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "body > div.illustration > div > div > div > div.top > a"))).click()
     print("Okta login button clicked")
 except Exception as e:
@@ -65,7 +66,7 @@ driver.find_element(By.CSS_SELECTOR, "#form20 > div.o-form-button-bar > input").
 WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#form60 > div.authenticator-verify-list.authenticator-list > div > div:nth-child(2) > div.authenticator-description > div.authenticator-button > a"))).click()
 
 # Wait for 20 seconds to manually accept the push notification
-time.sleep(5)
+time.sleep(10)
 
 total_ads = len(advert_ids)
 
