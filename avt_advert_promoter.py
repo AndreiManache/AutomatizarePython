@@ -5,17 +5,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import csv
+from typing import List, Optional
 
-# Your advert IDs
-advert_ids = []  # Replace with your actual advert IDs
 
-# Open the CSV file and read each row
-with open("D:\Proiecte\Automatizari\Automatizare Python\ids.csv", newline='') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        # Assuming the ad ID is in the first column
-        advert_id = row[0]
-        advert_ids.append(advert_id)
+def load_values(path: str) -> Optional[List[str]]:
+    """Return a list of values read from a CSV file or ``None`` if missing."""
+    try:
+        with open(path, newline="") as csv_file:
+            reader = csv.reader(csv_file)
+            return [row[0].strip() for row in reader if row]
+    except FileNotFoundError:
+        return None
+
+# List of promotion codes, loaded from ``promotions.csv`` if present.
+promotion_values = load_values("promotions.csv") or ["49"]
+
+# Your advert IDs loaded from ``ids.csv``. Fallback to a Windows-specific path
+# if the file is not found in the current directory.
+advert_ids = load_values("ids.csv")
+if advert_ids is None:
+    advert_ids = load_values(r"D:\\Proiecte\\Automatizari\\Automatizare Python\\ids.csv") or []
 
 # Now advert_ids contains all the ad IDs from the CSV file
 print(advert_ids)
@@ -58,20 +67,26 @@ total_ads = len(advert_ids)
 # Iterate through adverts
 for index, advert_id in enumerate(advert_ids, start=1):
     try:
-        # Navigate to the advert's promotion page
-        driver.get(f'{base_url}{advert_id}')
-        
-        # Select the promotion from the dropdown
-        dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
-        dropdown.select_by_value('49')  # Use the actual value for the option you wish to select
-        
-        # Click the submit button
-        driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
-        
-        print(f'Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)')
-        
+        for promo in promotion_values:
+            # Navigate to the advert's promotion page for each promotion
+            driver.get(f"{base_url}{advert_id}")
+
+            # Select the promotion from the dropdown
+            dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
+            dropdown.select_by_value(promo)
+
+            # Click the submit button
+            driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
+
+            # Small pause between promotions
+            time.sleep(1)
+
+        print(
+            f"Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)"
+        )
+
     except Exception as e:
-        print(f'Failed to promote advert {advert_id}: {str(e)}')
+        print(f"Failed to promote advert {advert_id}: {str(e)}")
 
 # Close the driver
 driver.quit()
