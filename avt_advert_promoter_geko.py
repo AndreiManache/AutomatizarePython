@@ -7,28 +7,26 @@ from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 import time
 import csv
+from typing import List, Optional
 
-# List of promotion codes to apply. Values can be provided in ``promotions.csv``
-promotion_values = []
-try:
-    with open("promotions.csv", newline="") as promo_file:
-        reader = csv.reader(promo_file)
-        for row in reader:
-            if row:
-                promotion_values.append(row[0].strip())
-except FileNotFoundError:
-    promotion_values = ["49"]
 
-# Your advert IDs
-advert_ids = []  # Replace with your actual advert IDs
+def load_values(path: str) -> Optional[List[str]]:
+    """Return a list of values read from a CSV file or ``None`` if missing."""
+    try:
+        with open(path, newline="") as csv_file:
+            reader = csv.reader(csv_file)
+            return [row[0].strip() for row in reader if row]
+    except FileNotFoundError:
+        return None
 
-# Open the CSV file and read each row
-with open("ids.csv", newline='') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        # Assuming the ad ID is in the first column
-        advert_id = row[0]
-        advert_ids.append(advert_id)
+# List of promotion codes to apply, loaded from ``promotions.csv`` if present.
+promotion_values = load_values("promotions.csv") or ["49"]
+
+# Your advert IDs loaded from ``ids.csv``. If the file isn't found, try the
+# Windows path used in some environments.
+advert_ids = load_values("ids.csv")
+if advert_ids is None:
+    advert_ids = load_values(r"D:\\Proiecte\\Automatizari\\Automatizare Python\\ids.csv") or []
 
 # Now advert_ids contains all the ad IDs from the CSV file
 print(advert_ids)
