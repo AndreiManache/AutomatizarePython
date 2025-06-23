@@ -6,6 +6,19 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import csv
 
+# List of promotion codes to apply. The values can also be loaded from
+# ``promotions.csv`` where each line contains one promotion value.
+promotion_values = []
+try:
+    with open("promotions.csv", newline="") as promo_file:
+        reader = csv.reader(promo_file)
+        for row in reader:
+            if row:
+                promotion_values.append(row[0].strip())
+except FileNotFoundError:
+    # Fallback to a default single promotion if the file is missing
+    promotion_values = ["49"]
+
 # Your advert IDs
 advert_ids = []  # Replace with your actual advert IDs
 
@@ -58,20 +71,26 @@ total_ads = len(advert_ids)
 # Iterate through adverts
 for index, advert_id in enumerate(advert_ids, start=1):
     try:
-        # Navigate to the advert's promotion page
-        driver.get(f'{base_url}{advert_id}')
-        
-        # Select the promotion from the dropdown
-        dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
-        dropdown.select_by_value('49')  # Use the actual value for the option you wish to select
-        
-        # Click the submit button
-        driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
-        
-        print(f'Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)')
-        
+        for promo in promotion_values:
+            # Navigate to the advert's promotion page for each promotion
+            driver.get(f"{base_url}{advert_id}")
+
+            # Select the promotion from the dropdown
+            dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
+            dropdown.select_by_value(promo)
+
+            # Click the submit button
+            driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
+
+            # Small pause between promotions
+            time.sleep(1)
+
+        print(
+            f"Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)"
+        )
+
     except Exception as e:
-        print(f'Failed to promote advert {advert_id}: {str(e)}')
+        print(f"Failed to promote advert {advert_id}: {str(e)}")
 
 # Close the driver
 driver.quit()
