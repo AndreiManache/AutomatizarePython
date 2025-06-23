@@ -8,6 +8,17 @@ from webdriver_manager.firefox import GeckoDriverManager
 import time
 import csv
 
+# List of promotion codes to apply. Values can be provided in ``promotions.csv``
+promotion_values = []
+try:
+    with open("promotions.csv", newline="") as promo_file:
+        reader = csv.reader(promo_file)
+        for row in reader:
+            if row:
+                promotion_values.append(row[0].strip())
+except FileNotFoundError:
+    promotion_values = ["49"]
+
 # Your advert IDs
 advert_ids = []  # Replace with your actual advert IDs
 
@@ -69,13 +80,15 @@ time.sleep(10)
 total_ads = len(advert_ids)
 for index, advert_id in enumerate(advert_ids, start=1):
     try:
-        # Navigate to the advert's promotion page
-        driver.get(f'{base_url}{advert_id}')
-        # Select the promotion from the dropdown
-        dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
-        dropdown.select_by_value('49') # Use the actual value for the option you wish to select
-        # Click the submit button
-        driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
+        for promo in promotion_values:
+            # Navigate to the advert's promotion page for each promotion
+            driver.get(f"{base_url}{advert_id}")
+            # Select the promotion from the dropdown
+            dropdown = Select(driver.find_element(By.CSS_SELECTOR, dropdown_selector))
+            dropdown.select_by_value(promo)
+            # Click the submit button
+            driver.find_element(By.CSS_SELECTOR, submit_button_selector).click()
+            time.sleep(1)
         print(f'Successfully promoted advert {advert_id} ({index}/{total_ads}, {index/total_ads:.2%} complete)')
     except Exception as e:
         print(f'Failed to promote advert {advert_id}: {str(e)}')
